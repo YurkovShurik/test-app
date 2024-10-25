@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_test_project/enum/password_strength.dart';
 
 class PasswordChecker extends HookWidget {
+
   final ValueChanged<String> onPasswordChanged;
   final ValueChanged<bool> onPasswordValidationChanged;
   final String firstName;
@@ -19,12 +20,9 @@ class PasswordChecker extends HookWidget {
   }) : super(key: key);
 
   PasswordStrength _calculatePasswordStrength(String password) {
-    // Если пароль совпадает с email или содержит email как подстроку, то это слабый пароль
     if (_containsExactNameOrEmail(password)) {
       return PasswordStrength.weak;
     }
-
-    // Проверка на силу пароля: длина, символы и цифры
     if (password.length >= 8 && _hasSymbolOrNumber(password)) {
       return password.length > 12 ? PasswordStrength.strong : PasswordStrength.medium;
     }
@@ -36,17 +34,16 @@ class PasswordChecker extends HookWidget {
     return RegExp(r'[0-9!@#$%^&*(),.?":{}|<>]').hasMatch(password);
   }
 
-  // Проверяем только полное совпадение с именем, фамилией или email, без частичных совпадений
   bool _containsExactNameOrEmail(String password) {
     final lowerPassword = password.toLowerCase();
-    return lowerPassword == email.toLowerCase() || // Полное совпадение с email
-        (firstName.length > 3 && lowerPassword == firstName.toLowerCase()) || // Полное совпадение с именем
-        (lastName.length > 3 && lowerPassword == lastName.toLowerCase()); // Полное совпадение с фамилией
+    return lowerPassword == email.toLowerCase() ||
+        (firstName.length > 3 && lowerPassword == firstName.toLowerCase()) ||
+        (lastName.length > 3 && lowerPassword == lastName.toLowerCase());
   }
 
   bool _validatePassword(String password) {
     return password.length >= 8 &&
-        !_containsExactNameOrEmail(password) && // Используем обновленную логику
+        !_containsExactNameOrEmail(password) &&
         _hasSymbolOrNumber(password) &&
         !password.contains(' ');
   }

@@ -4,12 +4,14 @@ import 'package:my_test_project/component/email_validator.dart';
 import 'package:my_test_project/component/form/text_input.dart';
 import 'package:my_test_project/component/password_checker.dart';
 import 'package:my_test_project/component/terms_and_conditions_text.dart';
+import 'package:my_test_project/page/home/home_page.dart';
 
 class AuthorizePage extends HookWidget {
   const AuthorizePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     final ValueNotifier<String> firstNameState = useState('');
     final ValueNotifier<String> lastNameState = useState('');
     final ValueNotifier<String> emailState = useState('');
@@ -122,7 +124,12 @@ class AuthorizePage extends HookWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: ElevatedButton(
-                      onPressed: isFormValid ? () {} : null,
+                      onPressed: isFormValid ? () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HomePage()),
+                        );
+                      } : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: isFormValid ? Colors.indigoAccent : Colors.grey,
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
