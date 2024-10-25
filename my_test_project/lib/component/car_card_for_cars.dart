@@ -60,7 +60,7 @@ class CarCardForCars extends HookWidget {
                       Row(
                         children: [
                           SizedBox(
-                            height: 20,
+                            height: 25,
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
@@ -71,22 +71,22 @@ class CarCardForCars extends HookWidget {
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.indigoAccent.shade100,
+                                backgroundColor: Colors.indigoAccent,
                               ),
-                              child: const Text('Details', style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+                              child: const Text('Details', style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.normal),
                               ),
                             ),
                           ),
                           const SizedBox(width: 15),
                           if (carStatus) ...[
                             SizedBox(
-                              height: 20,
+                              height: 25,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.yellow.shade100,
+                                  backgroundColor: Colors.yellow,
                                 ),
-                                child: Text(car.status, style: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+                                child: Text(car.status, style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.normal),
                                 ),
                               ),
                             ),

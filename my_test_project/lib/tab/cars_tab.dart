@@ -26,7 +26,7 @@ class CarsTab extends HookWidget {
               const Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Car status',
+                  'All cars',
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
               ),
