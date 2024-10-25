@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:my_test_project/tab/cars_tab.dart';
 import 'package:my_test_project/tab/status_tab.dart';
 
 class HomePage extends HookWidget {
@@ -12,7 +13,7 @@ class HomePage extends HookWidget {
 
     final List<Widget> pages = [
       const Center(child: Text("Company page")),
-      const Center(child: Text("Cars page")),
+      CarsTab(navigatorKey: navigatorKey),
       StatusTab(navigatorKey: navigatorKey),
       const Center(child: Text("Help page")),
     ];
@@ -28,18 +29,9 @@ class HomePage extends HookWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Row(
           children: [
-            Image.asset(
-              'assets/image/logo.png',
-              height: 40,
-            ),
+            Image.asset('assets/image/logo.png', height: 40),
             const SizedBox(width: 10),
-            const Text(
-              'Security Rent',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-            ),
+            const Text('Security Rent', style: TextStyle(color: Colors.black, fontSize: 20)),
           ],
         ),
         actions: [

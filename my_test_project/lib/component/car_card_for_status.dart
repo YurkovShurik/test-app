@@ -5,11 +5,11 @@ import 'package:latlong2/latlong.dart';
 import 'package:my_test_project/entity/car.dart';
 import 'package:my_test_project/page/car_details_page.dart';
 
-class CarCard extends HookWidget {
+class CarCardForStatus extends HookWidget {
 
   final Car car;
 
-  const CarCard({
+  const CarCardForStatus({
     Key? key,
     required this.car,
     required Null Function() onPressed,
@@ -209,12 +209,7 @@ class CarCard extends HookWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigoAccent,
                   ),
-                  child: const Text(
-                    'Open car details',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
-                    ),
+                  child: const Text('Open car details', style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
                   ),
                 ),
               ),

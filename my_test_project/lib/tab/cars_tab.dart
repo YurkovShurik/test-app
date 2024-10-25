@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:my_test_project/component/car_card_for_status.dart';
+import 'package:my_test_project/component/car_card_for_cars.dart';
 import 'package:my_test_project/entity/car.dart';
 import 'package:my_test_project/fetch/fetch_cars.dart';
 import 'package:my_test_project/page/car_details_page.dart';
 
-class StatusTab extends HookWidget {
+class CarsTab extends HookWidget {
+
   final GlobalKey<NavigatorState> navigatorKey;
 
-  const StatusTab({
+  const CarsTab({
     Key? key,
     required this.navigatorKey,
   }) : super(key: key);
@@ -58,14 +59,11 @@ class StatusTab extends HookWidget {
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (snapshot.hasData) {
-                  final cars = snapshot.data!.where((car) => car.status == "On duty").toList();
-                  if (cars.isEmpty) {
-                    return const Center(child: Text('No cars available with status "On duty"'));
-                  }
+                  final cars = snapshot.data!;
                   return ListView.builder(
                     itemCount: cars.length,
                     itemBuilder: (context, index) {
-                      return CarCardForStatus(
+                      return CarCardForCars(
                         car: cars[index],
                         onPressed: () {
                           navigatorKey.currentState!.push(
