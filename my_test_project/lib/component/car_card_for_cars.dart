@@ -6,10 +6,12 @@ import 'package:my_test_project/page/car_details_page.dart';
 class CarCardForCars extends HookWidget {
 
   final Car car;
+  final GlobalKey<NavigatorState> navigatorKey;
 
   const CarCardForCars({
     Key? key,
     required this.car,
+    required this.navigatorKey,
     required Null Function() onPressed,
   }) : super(key: key);
 
@@ -66,7 +68,7 @@ class CarCardForCars extends HookWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => CarDetailsPage(car: car),
+                                    builder: (context) => CarDetailsPage(car: car, navigatorKey: navigatorKey),
                                   ),
                                 );
                               },

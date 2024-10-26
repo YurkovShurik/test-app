@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_test_project/entity/car.dart';
+import 'package:my_test_project/page/car_list_page.dart';
 
 class CarDetailsPage extends HookWidget {
 
   final Car car;
+  final GlobalKey<NavigatorState> navigatorKey;
 
-  const CarDetailsPage({Key? key, required this.car}) : super(key: key);
+  const CarDetailsPage({
+    Key? key,
+    required this.car,
+    required this.navigatorKey,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +204,13 @@ class CarDetailsPage extends HookWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            navigatorKey.currentState!.push(
+                              MaterialPageRoute(
+                                builder: (context) => CarListPage(useOnTab: false, navigatorKey: navigatorKey),
+                              ),
+                            );
+                          },
                           child: const Row(
                             children: [
                               Icon(Icons.apps, size: 18, color: Colors.indigoAccent),
