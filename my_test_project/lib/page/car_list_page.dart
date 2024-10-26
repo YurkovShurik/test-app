@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_test_project/component/FutureListView.dart';
-import 'package:my_test_project/component/car_card_for_cars.dart';
+import 'package:my_test_project/component/card/car_card_for_cars.dart';
 import 'package:my_test_project/entity/car.dart';
 import 'package:my_test_project/fetch/fetch_cars.dart';
 import 'package:my_test_project/hook/ListenableFuture.dart';
-import 'package:my_test_project/page/car_details_page.dart';
 
 class CarListPage extends HookWidget {
 
@@ -33,8 +32,7 @@ class CarListPage extends HookWidget {
               alignment: Alignment.center,
               children: [
                 useOnTab! ?
-                const SizedBox()
-                    :
+                const SizedBox() :
                 Align(
                   alignment: Alignment.centerLeft,
                   child: GestureDetector(
@@ -77,13 +75,6 @@ class CarListPage extends HookWidget {
                 itemBuilder: (context, car, index) => CarCardForCars(
                   car: car,
                   navigatorKey: navigatorKey,
-                  onPressed: () {
-                    navigatorKey.currentState!.push(
-                      MaterialPageRoute(
-                        builder: (context) => CarDetailsPage(car: car, navigatorKey: navigatorKey),
-                      ),
-                    );
-                  },
                 ),
               ),
             ),

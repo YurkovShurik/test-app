@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_test_project/component/FutureListView.dart';
-import 'package:my_test_project/component/car_card_for_status.dart';
+import 'package:my_test_project/component/card/car_card_for_status.dart';
 import 'package:my_test_project/entity/car.dart';
 import 'package:my_test_project/fetch/fetch_cars.dart';
 import 'package:my_test_project/hook/ListenableFuture.dart';
-import 'package:my_test_project/page/car_details_page.dart';
 
 class StatusTab extends HookWidget {
+
   final GlobalKey<NavigatorState> navigatorKey;
 
   const StatusTab({
@@ -57,17 +57,15 @@ class StatusTab extends HookWidget {
           Flexible(
             child: FutureListView<Car>(
               snapshot: carListSnapshot,
-              itemBuilder: (context, car, index) => CarCardForStatus(
-                car: car,
-                navigatorKey: navigatorKey,
-                onPressed: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => CarDetailsPage(car: car, navigatorKey: navigatorKey),
-                    ),
-                  );
-                },
-              ),
+              itemBuilder: (context, car, index) {
+                if (car.status != "On duty") {
+                  return const SizedBox.shrink();
+                }
+                return CarCardForStatus(
+                  car: car,
+                  navigatorKey: navigatorKey,
+                );
+              },
             ),
           ),
         ],

@@ -14,7 +14,6 @@ class CarCardForStatus extends HookWidget {
     Key? key,
     required this.car,
     required this.navigatorKey,
-    required Null Function() onPressed,
   }) : super(key: key);
 
   @override

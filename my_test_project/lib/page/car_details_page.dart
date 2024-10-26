@@ -16,7 +16,6 @@ class CarDetailsPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final selectedImageIndex = useState(0);
 
     return Scaffold(
@@ -175,9 +174,12 @@ class CarDetailsPage extends HookWidget {
                                       style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
                                     const SizedBox(),
-                                    const Text('Gasoline', style: TextStyle(color: Colors.blueGrey, fontSize: 14)),
                                     Text(
-                                      car.gasoline!,
+                                      car.battery != null ? 'Battery' : 'Gasoline',
+                                      style: const TextStyle(color: Colors.blueGrey, fontSize: 14),
+                                    ),
+                                    Text(
+                                      car.battery != null ? car.battery! : car.gasoline!,
                                       textAlign: TextAlign.right,
                                       style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
