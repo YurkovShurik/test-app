@@ -42,6 +42,8 @@ class RentHistoryPage extends HookWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
+
           ],
         ),
       ),

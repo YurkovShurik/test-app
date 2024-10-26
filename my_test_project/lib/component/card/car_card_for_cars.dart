@@ -17,15 +17,13 @@ class CarCardForCars extends HookWidget {
   @override
   Widget build(BuildContext context) {
 
-    final isExpanded = useState(false);
     final carStatus = car.status == "On duty";
 
     return Card(
       elevation: 0,
-      color: isExpanded.value ? Colors.white : const Color.fromRGBO(241, 245, 249, 1),
+      color: const Color.fromRGBO(241, 245, 249, 1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: isExpanded.value ? const BorderSide(color: Colors.grey, width: 1) : BorderSide.none,
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -85,7 +83,7 @@ class CarCardForCars extends HookWidget {
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.yellow,
+                                  backgroundColor: Colors.yellow.shade700,
                                 ),
                                 child: Text(car.status, style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.normal),
                                 ),
